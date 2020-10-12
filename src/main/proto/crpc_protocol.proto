@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "com.github.leeyazhou.grpc";
+option java_multiple_files = true;
+option java_outer_classname = "CrpcProtocol";
+
+message RequestGrpcMessage {
+    bytes invocation = 1;
+}
+
+message ResponseGrpcMessage {
+    bytes response = 1;
+}
+
+service MessageService {
+    rpc request (RequestGrpcMessage) returns (ResponseGrpcMessage);
+}
