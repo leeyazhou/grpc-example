@@ -1,6 +1,9 @@
-package com.github.leeyazhou.grpc;
+package com.github.leeyazhou.grpc.core;
 
 import com.alibaba.fastjson.JSON;
+import com.github.leeyazhou.grpc.MessageServiceGrpc;
+import com.github.leeyazhou.grpc.RequestGrpcMessage;
+import com.github.leeyazhou.grpc.ResponseGrpcMessage;
 import com.google.protobuf.ByteString;
 
 import io.grpc.ManagedChannel;

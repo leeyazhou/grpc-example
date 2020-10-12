@@ -1,9 +1,10 @@
-package com.github.leeyazhou.grpc;
+package com.github.leeyazhou.grpc.core;
 
 public class Invocation {
 
 	private String serviceName;
 	private String methodName;
+	private Object[] args;
 
 	public String getServiceName() {
 		return serviceName;
@@ -21,4 +22,13 @@ public class Invocation {
 		this.methodName = methodName;
 	}
 
+	public Object[] getArgs() {
+		return args;
+	}
+
+	public void setArgs(Object[] args) {
+		this.args = args;
+	}
+
+	
 }

@@ -1,20 +1,27 @@
-package com.github.leeyazhou.grpc;
+/**
+ * 
+ */
+package com.github.leeyazhou.grpc.example;
 
-public class HelloWorldApp {
+import com.github.leeyazhou.grpc.core.GrpcClient;
+import com.github.leeyazhou.grpc.core.Invocation;
+import com.github.leeyazhou.grpc.core.Response;
 
-	public static void main(String[] args) throws Exception {
+/**
+ * @author leeyazhou
+ *
+ */
+public class GrpcConsumer {
+
+	public static void main(String[] args) {
 		String host = "127.0.0.1";
 		int port = 8000;
-		GrpcServer server = new GrpcServer(port);
-		server.start();
 		GrpcClient client = new GrpcClient(host, port);
-		
+
 		Invocation invocation = new Invocation();
 		invocation.setServiceName("echoService");
 		invocation.setMethodName("echo");
 		Response response = client.request(invocation);
 		System.out.println(response);
-		server.shutdown();
 	}
-
 }
