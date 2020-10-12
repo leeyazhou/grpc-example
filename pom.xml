@@ -11,19 +11,12 @@
 		<!-- Message源文件输出目录 -->
 		<javaOutputDirectory>${project.basedir}/src/main/java-proto</javaOutputDirectory>
 		<!-- gRPC源文件输出目录 -->
-		<protocPluginOutputDirectory>
-			${project.basedir}/src/main/java-grpc
-		</protocPluginOutputDirectory>
+		<protocPluginOutputDirectory>${project.basedir}/src/main/java-grpc</protocPluginOutputDirectory>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-netty</artifactId>
-			<version>${grpc.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.grpc</groupId>
-			<artifactId>grpc-okhttp</artifactId>
 			<version>${grpc.version}</version>
 		</dependency>
 		<dependency>
@@ -40,6 +33,11 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.2.74</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
 		</dependency>
 
 	</dependencies>

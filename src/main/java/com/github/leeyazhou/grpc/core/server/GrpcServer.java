@@ -1,4 +1,4 @@
-package com.github.leeyazhou.grpc.core;
+package com.github.leeyazhou.grpc.core.server;
 
 import java.io.IOException;
 
