@@ -18,15 +18,23 @@ public class GrpcConsumer {
 	}
 
 	public void start() {
-		String host = "127.0.0.1";
+		String host = "localhost";
 		int port = 8000;
 		GrpcClient client = GrpcClient.get(host, port);
 
-		Invocation invocation = new Invocation();
-		invocation.setServiceName("EchoService");
-		invocation.setMethodName("echo");
-		invocation.setArgs(new String[] { "测试GRPC" });
-		Response response = client.request(invocation);
-		System.out.println(response.getResponse());
+		int i = 0;
+		while (i++ < 10) {
+			Invocation invocation = new Invocation();
+			invocation.setServiceName("EchoService");
+			invocation.setMethodName("echo");
+			invocation.setArgs(new String[] { "测试GRPC" });
+			Response response = client.request(invocation);
+			System.out.println(response.getResponse());
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
