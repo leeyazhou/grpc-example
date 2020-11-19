@@ -58,6 +58,37 @@ public final class MessageServiceGrpc {
     return getRequestMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.github.leeyazhou.grpc.RequestGrpcMessage,
+      com.github.leeyazhou.grpc.ResponseGrpcMessage> getRequestStreamingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "requestStreaming",
+      requestType = com.github.leeyazhou.grpc.RequestGrpcMessage.class,
+      responseType = com.github.leeyazhou.grpc.ResponseGrpcMessage.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<com.github.leeyazhou.grpc.RequestGrpcMessage,
+      com.github.leeyazhou.grpc.ResponseGrpcMessage> getRequestStreamingMethod() {
+    io.grpc.MethodDescriptor<com.github.leeyazhou.grpc.RequestGrpcMessage, com.github.leeyazhou.grpc.ResponseGrpcMessage> getRequestStreamingMethod;
+    if ((getRequestStreamingMethod = MessageServiceGrpc.getRequestStreamingMethod) == null) {
+      synchronized (MessageServiceGrpc.class) {
+        if ((getRequestStreamingMethod = MessageServiceGrpc.getRequestStreamingMethod) == null) {
+          MessageServiceGrpc.getRequestStreamingMethod = getRequestStreamingMethod =
+              io.grpc.MethodDescriptor.<com.github.leeyazhou.grpc.RequestGrpcMessage, com.github.leeyazhou.grpc.ResponseGrpcMessage>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "requestStreaming"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.leeyazhou.grpc.RequestGrpcMessage.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.github.leeyazhou.grpc.ResponseGrpcMessage.getDefaultInstance()))
+              .setSchemaDescriptor(new MessageServiceMethodDescriptorSupplier("requestStreaming"))
+              .build();
+        }
+      }
+    }
+    return getRequestStreamingMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -113,6 +144,13 @@ public final class MessageServiceGrpc {
       asyncUnimplementedUnaryCall(getRequestMethod(), responseObserver);
     }
 
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.github.leeyazhou.grpc.RequestGrpcMessage> requestStreaming(
+        io.grpc.stub.StreamObserver<com.github.leeyazhou.grpc.ResponseGrpcMessage> responseObserver) {
+      return asyncUnimplementedStreamingCall(getRequestStreamingMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -122,6 +160,13 @@ public final class MessageServiceGrpc {
                 com.github.leeyazhou.grpc.RequestGrpcMessage,
                 com.github.leeyazhou.grpc.ResponseGrpcMessage>(
                   this, METHODID_REQUEST)))
+          .addMethod(
+            getRequestStreamingMethod(),
+            asyncBidiStreamingCall(
+              new MethodHandlers<
+                com.github.leeyazhou.grpc.RequestGrpcMessage,
+                com.github.leeyazhou.grpc.ResponseGrpcMessage>(
+                  this, METHODID_REQUEST_STREAMING)))
           .build();
     }
   }
@@ -146,6 +191,14 @@ public final class MessageServiceGrpc {
         io.grpc.stub.StreamObserver<com.github.leeyazhou.grpc.ResponseGrpcMessage> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getRequestMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.github.leeyazhou.grpc.RequestGrpcMessage> requestStreaming(
+        io.grpc.stub.StreamObserver<com.github.leeyazhou.grpc.ResponseGrpcMessage> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(getRequestStreamingMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -195,6 +248,7 @@ public final class MessageServiceGrpc {
   }
 
   private static final int METHODID_REQUEST = 0;
+  private static final int METHODID_REQUEST_STREAMING = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -227,6 +281,9 @@ public final class MessageServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_REQUEST_STREAMING:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.requestStreaming(
+              (io.grpc.stub.StreamObserver<com.github.leeyazhou.grpc.ResponseGrpcMessage>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -279,6 +336,7 @@ public final class MessageServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new MessageServiceFileDescriptorSupplier())
               .addMethod(getRequestMethod())
+              .addMethod(getRequestStreamingMethod())
               .build();
         }
       }

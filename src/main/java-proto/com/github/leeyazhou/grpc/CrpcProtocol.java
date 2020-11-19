@@ -35,10 +35,12 @@ public final class CrpcProtocol {
     java.lang.String[] descriptorData = {
       "\n\023crpc_protocol.proto\"(\n\022RequestGrpcMess" +
       "age\022\022\n\ninvocation\030\001 \001(\014\"\'\n\023ResponseGrpcM" +
-      "essage\022\020\n\010response\030\001 \001(\0142F\n\016MessageServi" +
-      "ce\0224\n\007request\022\023.RequestGrpcMessage\032\024.Res" +
-      "ponseGrpcMessageB+\n\031com.github.leeyazhou" +
-      ".grpcB\014CrpcProtocolP\001b\006proto3"
+      "essage\022\020\n\010response\030\001 \001(\0142\211\001\n\016MessageServ" +
+      "ice\0224\n\007request\022\023.RequestGrpcMessage\032\024.Re" +
+      "sponseGrpcMessage\022A\n\020requestStreaming\022\023." +
+      "RequestGrpcMessage\032\024.ResponseGrpcMessage" +
+      "(\0010\001B+\n\031com.github.leeyazhou.grpcB\014CrpcP" +
+      "rotocolP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

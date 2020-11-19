@@ -12,9 +12,9 @@ public class GrpcServer {
 
 	public GrpcServer(int port) {
 		this.serviceHandler = new ServiceHandler();
-
-		File certChain = new File("/opt/code/git/grpc-example/src/main/resources/server.crt");
-		File privateKey = new File("/opt/code/git/grpc-example/src/main/resources/server.pem");
+		System.out.println();
+		File certChain = new File(Thread.currentThread().getContextClassLoader().getResource("server.crt").getFile());
+		File privateKey = new File(Thread.currentThread().getContextClassLoader().getResource("server.pem").getFile());
 		this.server = NettyServerBuilder.forPort(port)
 				//
 				.useTransportSecurity(certChain, privateKey)

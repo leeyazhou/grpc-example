@@ -28,11 +28,11 @@ public class GrpcConsumer {
 			invocation.setServiceName("EchoService");
 			invocation.setMethodName("echo");
 			invocation.setArgs(new String[] { "测试GRPC" });
-			Response response = client.request(invocation);
+			Response response = client.streamingRequest(invocation);
 			System.out.println(response.getResponse());
 			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
+//				Thread.sleep(2000);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
